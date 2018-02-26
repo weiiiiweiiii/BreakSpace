@@ -2,3 +2,7 @@
 
 Consists of prototype program of a simple text editor. (Python 2.7)
 
+
+Credit to Fredrik Lundh and his blog effbot.org
+
+Only for temporary demo and will be delete before 3/2/2018
