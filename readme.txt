@@ -5,7 +5,7 @@ SpaceBreaker Introduction
 +-----------------------------------------------------------+
 
 +---> spacebreakerlib 
-| 	|
+|  |
 |  +---> __init__.py
 |  |     
 |  +---> SpaceBreaker.py
