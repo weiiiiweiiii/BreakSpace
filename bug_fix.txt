@@ -6,6 +6,8 @@
     -> opens file dialog two times
  3. auto-save can cause program to run with noticeable
     lag
+ 4. Command-W causes error, dialog box not showing up
+    properly
  
  
 +------------------------------------------------------+
