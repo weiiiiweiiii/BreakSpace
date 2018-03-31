@@ -54,6 +54,7 @@ class FileMenu(tk.Menu):
         # added
         self.add_command(label="Save As", command = self.__textArea.textRelatedObjs['SaveAs'], accelerator="Command-Shift-s")
         
+        self.add_command(label="Open in new window", command = self.__textArea.textRelatedObjs['OpenInNewWindow'])
         
         recentMenu = tk.Menu(self)
         self.add_cascade(label="Open Recent", menu=recentMenu)

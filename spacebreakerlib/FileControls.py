@@ -8,6 +8,7 @@ import tkinter as tk
 import tkinter.filedialog as tf
 from spacebreakerlib.RecentFiles import RecentFiles
 from spacebreakerlib.MessageDialog import MessageDialog as md
+from spacebreakerlib import SpaceBreaker
 
 class FileControls:
 
@@ -37,6 +38,7 @@ class FileControls:
         
         self.__textArea.textRelatedObjs['SaveAs'] = self.__saveAs
         self.__textArea.textRelatedObjs['OpenWithName'] = self.__openWithName
+        self.__textArea.textRelatedObjs['OpenInNewWindow'] = self.__openInNewWindow
 
     def __bindShortCuts(self):
         #new file
@@ -55,7 +57,13 @@ class FileControls:
         #save as
         for key in ['<Command-Shift-s>']:
             self.__root.bind(key, self.__textArea.textRelatedObjs['SaveAs'])
-            
+    
+    def __openInNewWindow(self, event=None):
+        file_name = tf.askopenfilename(defaultextension=".txt", filetypes=[("All Files","*.*"),
+                                        ("Text Documents","*.txt"),("Python Files","*.py")])
+        x = SpaceBreaker.SpaceBreaker(file_name)
+        x.run()
+    
     def __openWithName(self, event=None):
         self.__textArea.textRelatedObjs['OpenedFile'] = event
         self.__root.title(os.path.basename(self.__textArea.textRelatedObjs['OpenedFile']) + " - Space Breaker")
@@ -163,10 +171,7 @@ class FileControls:
         if self.__textArea.edit_modified() != 0:
             m = md(self.__root, "这是一条警告信息！请认真对待！", "你没保存啊！确定退出吗？？？", (0, "取消"), (1, "强行退出"), (2, "保存并退出"))
             self.__root.wait_window(m.topWindow)
-            print("mdr:", md.response)
             result = m.getResponse()
-            print("result is ",result)
-            
             if result == -1:
                 return
             elif result == 0:
