@@ -4,6 +4,8 @@
  1. Font not working properly when having multiple tags
  2. Command-Shift-s (Save As) Not working properly.
     -> opens file dialog two times
+ 3. auto-save can cause program to run with noticeable
+    lag
  
  
 +------------------------------------------------------+
