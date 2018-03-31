@@ -162,7 +162,7 @@ class FileControls:
             file.close()
             print("AUTO_SAVED")
             self.__textArea.edit_modified(0)
-        self.__textArea.master.after(1000, self.autosave)
+        self.__textArea.master.after(10000, self.autosave)
     # do something you want
 
 #         try:
