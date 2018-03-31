@@ -5,6 +5,7 @@
 @author: Liangze Yu's Fathers
 """
 
+
 from spacebreakerlib import SpaceBreaker as sb
 
 if __name__ == "__main__":

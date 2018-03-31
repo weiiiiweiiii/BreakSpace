@@ -10,6 +10,7 @@ from spacebreakerlib import WindowConfig as wc
 from spacebreakerlib import TextArea as ta
 
 
+
 class SpaceBreaker(tk.Tk):
     
     def __init__(self):
@@ -30,4 +31,10 @@ class SpaceBreaker(tk.Tk):
 
     def run(self):
         self.mainloop()
+
+        
+
+        
+        
+            
 
