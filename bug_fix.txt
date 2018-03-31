@@ -2,6 +2,8 @@
 |                       BUG LIST                       |
 +------------------------------------------------------+
  1. Font not working properly when having multiple tags
+ 2. Command-Shift-s (Save As) Not working properly.
+    -> opens file dialog two times
  
  
 +------------------------------------------------------+
