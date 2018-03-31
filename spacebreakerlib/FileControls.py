@@ -7,6 +7,7 @@ import os
 import tkinter as tk
 import tkinter.filedialog as tf
 from spacebreakerlib.RecentFiles import RecentFiles
+from spacebreakerlib.MessageDialog import MessageDialog as md
 
 class FileControls:
 
@@ -23,7 +24,10 @@ class FileControls:
         self.__bindShortCuts()
         
         self.autosave()
-        self._running = True
+        self._running = False
+        
+        # bind close window to self.__exit
+        self.__root.protocol("WM_DELETE_WINDOW", self.__exit)
 
     def __storeFunctions(self):
         self.__textArea.textRelatedObjs['New'] = self.__newFile
@@ -65,6 +69,7 @@ class FileControls:
         #finish insertion
         file.close()
         RecentFiles.addOpenedFile(self.__textArea.textRelatedObjs['OpenedFile'])
+        self.__textArea.edit_modified(0)
         
         
         self.__textArea.edit_modified(0)
@@ -124,6 +129,7 @@ class FileControls:
                 file.close()
                 # Change title
                 self.__root.title(os.path.basename(self.__textArea.textRelatedObjs['OpenedFile']) + " - Space Breaker")
+                self.__textArea.edit_modified(0)
                 
                 
         #opened file
@@ -132,6 +138,7 @@ class FileControls:
             file = open(self.__textArea.textRelatedObjs['OpenedFile'],"w")
             file.write(self.__textArea.get(1.0,tk.END))
             file.close()
+            self.__textArea.edit_modified(0)
 
     def __saveAs(self, event = None):
         # Save as new file
@@ -149,19 +156,36 @@ class FileControls:
             file.close()
             # Change title
             self.__root.title(os.path.basename(self.__textArea.textRelatedObjs['OpenedFile']) + " - Space Breaker")
+            self.__textArea.edit_modified(0)
             
     
     def __exit(self, event = None):
-        self.__root.destroy()
-        self._running = False
+        if self.__textArea.edit_modified() != 0:
+            m = md(self.__root, "这是一条警告信息！请认真对待！", "你没保存啊！确定退出吗？？？", (0, "取消"), (1, "强行退出"), (2, "保存并退出"))
+            self.__root.wait_window(m.topWindow)
+            print("mdr:", md.response)
+            result = m.getResponse()
+            print("result is ",result)
+            
+            if result == -1:
+                return
+            elif result == 0:
+                return
+            elif result == 1:
+                self.__root.destroy()
+            elif result == 2:
+                self.__saveAs()
+        else:
+            self.__root.destroy()
         
     def autosave(self):
         if self.__textArea.textRelatedObjs['OpenedFile'] not in [None, ""] and self._running:
-            file = open(self.__textArea.textRelatedObjs['OpenedFile'],"w")
-            file.write(self.__textArea.get(1.0,tk.END))
-            file.close()
-            print("AUTO_SAVED")
-            self.__textArea.edit_modified(0)
+            if self.__textArea.edit_modified() != 0:
+                file = open(self.__textArea.textRelatedObjs['OpenedFile'],"w")
+                file.write(self.__textArea.get(1.0,tk.END))
+                file.close()
+                print("AUTO_SAVED")
+                self.__textArea.edit_modified(0)
         self.__textArea.master.after(10000, self.autosave)
     # do something you want
 
