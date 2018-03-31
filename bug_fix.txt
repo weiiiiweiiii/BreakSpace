@@ -8,6 +8,7 @@
     lag
  4. Command-W causes error, dialog box not showing up
     properly
+ 5. FIFinderSyncExtensionHost (under autosave)
  
  
 +------------------------------------------------------+
