@@ -49,6 +49,9 @@ class FileMenu(tk.Menu):
         self.add_separator()
         #close
         self.add_command(label="Close",command = self.__textArea.textRelatedObjs['Exit'],accelerator="Command-w")
+        
+        # added
+        self.add_command(label="Save As", command = self.__textArea.textRelatedObjs['SaveAs'], accelerator="Command-Shift-s")
 
     def __cascade(self):
         self.master.add_cascade(label="File", menu = self) 

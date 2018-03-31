@@ -26,6 +26,8 @@ class FileControls:
         self.__textArea.textRelatedObjs['Open'] = self.__openFile
         self.__textArea.textRelatedObjs['Save'] = self.__saveFile
         self.__textArea.textRelatedObjs['Exit'] = self.__exit
+        
+        self.__textArea.textRelatedObjs['SaveAs'] = self.__saveAs
 
     def __bindShortCuts(self):
         #new file
@@ -40,6 +42,10 @@ class FileControls:
         #exit
         for key in ['<Command-w>','<Command-W>']:
             self.__root.bind(key,self.__textArea.textRelatedObjs['Exit'])
+        
+        #save as
+        for key in ['<Command-Shift-s>']:
+            self.__root.bind(key, self.__textArea.textRelatedObjs['SaveAs'])
 
     def __newFile(self, event = None):
         #change title
@@ -89,10 +95,28 @@ class FileControls:
                 self.__root.title(os.path.basename(self.__textArea.textRelatedObjs['OpenedFile']) + " - Space Breaker")
         #opened file
         else:
-            file = open(self.__file,"w")
+            # file = open(self.__file,"w")
+            file = open(self.__textArea.textRelatedObjs['OpenedFile'],"w")
             file.write(self.__textArea.get(1.0,tk.END))
             file.close()
-
+    
+    def __saveAs(self, event = None):
+        # Save as new file
+        self.__textArea.textRelatedObjs['OpenedFile'] = tf.asksaveasfilename(initialfile='Untitled.txt',
+                                        defaultextension=".txt",
+                                        filetypes=[("All Files","*.*"),
+                                            ("Text Documents","*.txt")])
+        #stop saving and reset openedFile object
+        if self.__textArea.textRelatedObjs['OpenedFile'] == "":
+            self.__textArea.textRelatedObjs['OpenedFile'] = None
+        else:
+            # open and write
+            file = open(self.__textArea.textRelatedObjs['OpenedFile'],"w")
+            file.write(self.__textArea.get(1.0,tk.END))
+            file.close()
+            # Change title
+            self.__root.title(os.path.basename(self.__textArea.textRelatedObjs['OpenedFile']) + " - Space Breaker")
+    
     def __exit(self, event = None):
         self.__root.destroy()
 
