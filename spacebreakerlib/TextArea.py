@@ -12,11 +12,11 @@ from spacebreakerlib import Font as f
 class TextArea(tk.Text):
 
     #stored objects like functions and files
-    textRelatedObjs = {}
+    # textRelatedObjs = {}
     
     def __init__(self,root):
         tk.Text.__init__(self,root, wrap = tk.NONE, undo = True)
-        
+        self.textRelatedObjs = {}
         
         self.__bindEverything()
 
