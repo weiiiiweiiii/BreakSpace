@@ -113,7 +113,7 @@ class EditMenu(tk.Menu):
     def __cascade(self):
         self.master.add_cascade(label = 'Edit', menu = self)
        
- class FormatMenu(tk.Menu):
+class FormatMenu(tk.Menu):
 
     def __init__(self,masterMenu,textArea):
         tk.Menu.__init__(self,masterMenu)
