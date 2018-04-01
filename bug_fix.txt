@@ -2,9 +2,22 @@
 |                       BUG LIST                       |
 +------------------------------------------------------+
  1. Font not working properly when having multiple tags
+ 2. Command-Shift-s (Save As) Not working properly.
+    -> opens file dialog two times
+ 3. auto-save can cause program to run with noticeable
+    lag
+ 4. Command-W causes error, dialog box not showing up
+    properly
+ 5. FIFinderSyncExtensionHost (under autosave)
+ 6. Multiple open does not save
  
  
 +------------------------------------------------------+
 |                      FIXED LIST                      |
 +------------------------------------------------------+
- 1. ......
+ 1. fixed bug #6
+    changed textRelatedObjects from class variable to 
+    instance variable. Originally when opening a new file
+    in a new window, textRelatedObjects (as a class variable
+    is modified in new window, which changes the OpenedFile
+    for the original window)

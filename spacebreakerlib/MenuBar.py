@@ -4,6 +4,7 @@
 @author: Liangze Yu
 """
 import tkinter as tk
+from spacebreakerlib.RecentFiles import RecentFiles
 
 class MenuBar(tk.Menu):
 
@@ -49,9 +50,29 @@ class FileMenu(tk.Menu):
         self.add_separator()
         #close
         self.add_command(label="Close",command = self.__textArea.textRelatedObjs['Exit'],accelerator="Command-w")
-
+        
+        # added
+        self.add_command(label="Save As", command = self.__textArea.textRelatedObjs['SaveAs'], accelerator="Command-Shift-s")
+        
+        self.add_command(label="Open in new window", command = self.__textArea.textRelatedObjs['OpenInNewWindow'])
+        
+        recentMenu = tk.Menu(self)
+        self.add_cascade(label="Open Recent", menu=recentMenu)
+        
+        _file_names = RecentFiles.getRecentFiles()
+        if len(_file_names) > 0:
+            for name in _file_names:
+                recentMenu.add_command(label=name, command=self.__openWithNameHelper(name))
+        else:
+            recentMenu.add_command(label="No Recent File", state=tk.DISABLED)
+        
     def __cascade(self):
         self.master.add_cascade(label="File", menu = self) 
+    
+    def __openWithNameHelper(self, f_name):
+        def f():
+            self.__textArea.textRelatedObjs['OpenWithName'](f_name)
+        return f
 
 
 class HelpMenu(tk.Menu):
