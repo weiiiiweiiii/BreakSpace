@@ -9,6 +9,7 @@
  4. Command-W causes error, dialog box not showing up
     properly
  5. FIFinderSyncExtensionHost (under autosave)
+ 6. Multiple open does not save
  
  
 +------------------------------------------------------+
