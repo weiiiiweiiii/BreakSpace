@@ -15,4 +15,9 @@
 +------------------------------------------------------+
 |                      FIXED LIST                      |
 +------------------------------------------------------+
- 1. ......
+ 1. fixed bug #6
+    changed textRelatedObjects from class variable to 
+    instance variable. Originally when opening a new file
+    in a new window, textRelatedObjects (as a class variable
+    is modified in new window, which changes the OpenedFile
+    for the original window)
