@@ -12,6 +12,8 @@
  6. Multiple open does not save
  7. not found pop error
  8. cannot cancel find highlight 
+ 9. Shortcut not working properly when new TopLevel window
+    is created. 1. Close without sasve; 2. Find window
  
 +------------------------------------------------------+
 |                      FIXED LIST                      |
