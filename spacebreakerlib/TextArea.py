@@ -7,7 +7,7 @@
 import tkinter as tk
 
 from spacebreakerlib import TextBind as tb
-from spacebreakerlib import Font as f
+from spacebreakerlib import FontControls as f
 
 class TextArea(tk.Text):
 
@@ -23,7 +23,7 @@ class TextArea(tk.Text):
         self.__pack()
 
     def __bindEverything(self):
-        f.Font(self.master, self)
+        f.FontControls(self.master, self)
         tb.TextBind(self)
 
     def __pack(self):
