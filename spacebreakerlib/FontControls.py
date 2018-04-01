@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter.font import Font as tkinterFont
 
-class Font:
+class FontControls:
     def __init__(self, root, textArea):
         self._root = root
         self.__textArea = textArea
