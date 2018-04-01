@@ -14,6 +14,8 @@
  8. cannot cancel find highlight 
  9. Shortcut not working properly when new TopLevel window
     is created. 1. Close without sasve; 2. Find window
+ 10. Undo Stack need to customize 1. all delete short cut
+     and region edit like comment and indent
  
 +------------------------------------------------------+
 |                      FIXED LIST                      |
