@@ -9,20 +9,32 @@
  4. Command-W causes error, dialog box not showing up
     properly
  5. FIFinderSyncExtensionHost (under autosave)
- 6. Multiple open does not save
+ 6. 
  7. not found pop error
  8. cannot cancel find highlight 
- 9. Shortcut not working properly when new TopLevel window
-    is created. 1. Close without sasve; 2. Find window
- 10. Undo Stack need to customize 1. all delete short cut
-     and region edit like comment and indent
+ 9. 
+ 10. Undo Stack need to customize
+	- all delete short cut and region edit like comment and indent
+11. Accelerator about Top Level Window couldn’t bind because will cause bug #9
+12. Command-Delete is not working with binding shortcut key
  
 +------------------------------------------------------+
 |                      FIXED LIST                      |
 +------------------------------------------------------+
- 1. fixed bug #6
-    changed textRelatedObjects from class variable to 
-    instance variable. Originally when opening a new file
-    in a new window, textRelatedObjects (as a class variable
-    is modified in new window, which changes the OpenedFile
-    for the original window)
+ 1. fixed bug #6:
+	Multiple open does not save
+
+	changed textRelatedObjects from class variable to 
+	instance variable. Originally when opening a new file
+	in a new window, textRelatedObjects (as a class variable
+    	is modified in new window, which changes the OpenedFile
+    	for the original window)
+
+2. fixed bug #9:
+	Shortcut not working properly when new TopLevel window is created. 
+	- Close without save as;
+	- Find window
+
+	When bind command with Root Window(self.__root.bind(command = KEY)) has 
+	the exactly same keys with accelerator in Menu Bar(accelerator = KEY)) 
+	under the condition of popping out Top Level Window will cause bugs

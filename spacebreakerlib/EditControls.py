@@ -56,7 +56,7 @@ class EditControls:
         self.__root.bind('<Control-,>',self.__textArea.textRelatedObjs['JumpToLineStart'])
         self.__root.bind('<Control-.>',self.__textArea.textRelatedObjs['JumpToLineEnd'])
 
-        for key in ['<Command-F>', "<Command-f>"]:
+        for key in ['<Command-f>', "<Command-F>"]:
             self.__root.bind(key, self.__textArea.textRelatedObjs['Find'])
         
         for key in ['<Command-d>','<Command-D>']:
