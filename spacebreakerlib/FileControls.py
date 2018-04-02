@@ -7,7 +7,7 @@ import os
 import tkinter as tk
 import tkinter.filedialog as tf
 from spacebreakerlib.RecentFiles import RecentFiles
-from spacebreakerlib.MessageDialog import MessageDialog as md
+from spacebreakerlib.ExitDialog import ExitDialog as ed
 from spacebreakerlib import SpaceBreaker
 
 class FileControls:
@@ -28,7 +28,7 @@ class FileControls:
         self._running = False
         
         # bind close window to self.__exit
-        self.__root.protocol("WM_DELETE_WINDOW", self.__exit)
+        self.__root.protocol("WM_DELETE_WINDOW", self.__textArea.textRelatedObjs['Exit'])
 
     def __storeFunctions(self):
         self.__textArea.textRelatedObjs['New'] = self.__newFile
@@ -55,7 +55,7 @@ class FileControls:
             self.__root.bind(key,self.__textArea.textRelatedObjs['Exit'])
         
         #save as
-        for key in ['<Command-Shift-s>']:
+        for key in ['<Command-Shift-s>','<Command-Shift-s>']:
             self.__root.bind(key, self.__textArea.textRelatedObjs['SaveAs'])
     
     def __openInNewWindow(self, event=None):
@@ -165,13 +165,14 @@ class FileControls:
             # Change title
             self.__root.title(os.path.basename(self.__textArea.textRelatedObjs['OpenedFile']) + " - Space Breaker")
             self.__textArea.edit_modified(0)
+        return 'break'
             
     
     def __exit(self, event = None):
         if self.__textArea.edit_modified() != 0:
-            m = md(self.__root, "这是一条警告信息！请认真对待！", "你没保存啊！确定退出吗？？？", (0, "取消"), (1, "强行退出"), (2, "保存并退出"))
-            self.__root.wait_window(m.topWindow)
-            result = m.getResponse()
+            message = ed(self.__root, "这是一条警告信息！请认真对待！", "你没保存啊！确定退出吗？？？", (0, "取消"), (1, "强行退出"), (2, "保存并退出"))
+            self.__root.wait_window(message)
+            result = message.getResponse()
             if result == -1:
                 return
             elif result == 0:
