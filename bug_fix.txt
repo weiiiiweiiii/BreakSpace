@@ -16,6 +16,7 @@
     is created. 1. Close without sasve; 2. Find window
  10. Undo Stack need to customize 1. all delete short cut
      and region edit like comment and indent
+ 11. _tkinter.TclError: nothing to redo
  
 +------------------------------------------------------+
 |                      FIXED LIST                      |
