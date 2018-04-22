@@ -52,10 +52,10 @@ class FileMenu(tk.Menu):
         # seperate from above    
         self.add_separator()
         #close
-        self.add_command(label="Close",command = self.__textArea.textRelatedObjs['Exit'],accelerator="Command-w")
+        self.add_command(label="Close",command = self.__textArea.textRelatedObjs['Exit']) #accelerator="Command-W"
         
         # added
-        self.add_command(label="Save As", command = self.__textArea.textRelatedObjs['SaveAs'], accelerator="Command-Shift-s")
+        self.add_command(label="Save As", command = self.__textArea.textRelatedObjs['SaveAs']) #accelerator="Command-Shift-S"
         
         self.add_command(label="Open in new window", command = self.__textArea.textRelatedObjs['OpenInNewWindow'])
         
@@ -97,7 +97,7 @@ class EditMenu(tk.Menu):
         self.add_command(label = 'Paste', command = self.__textArea.textRelatedObjs['Paste'],accelerator="Command-v")
         self.add_command(label = 'SelectAll', command = self.__textArea.textRelatedObjs['SelectAll'],accelerator="Command-a")
         self.add_separator()
-        self.add_command(label = 'Find', command = self.__textArea.textRelatedObjs['Find'],accelerator='Command-f')
+        self.add_command(label = 'Find', command = self.__textArea.textRelatedObjs['Find']) #accelerator='Command-F'
         self.add_separator()
         self.add_command(label = 'Jump To Line Start', command = self.__textArea.textRelatedObjs['JumpToLineStart'],accelerator="Control-,")
         self.add_command(label = 'Jump To Line End', command = self.__textArea.textRelatedObjs['JumpToLineEnd'],accelerator="Control-.")

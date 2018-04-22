@@ -11,4 +11,3 @@ from spacebreakerlib import SpaceBreaker as sb
 if __name__ == "__main__":
     editor = sb.SpaceBreaker()
     editor.run()
-
