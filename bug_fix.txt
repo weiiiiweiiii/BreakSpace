@@ -12,12 +12,14 @@
  6. 
  7. not found pop error
  8. cannot cancel find highlight 
- 9. Shortcut not working properly when new TopLevel window
-    is created. 1. Close without sasve; 2. Find window
- 10. Undo Stack need to customize
-	- all delete short cut and region edit like comment and indent
+ 9. 
+ 10. 
 11. Accelerator about Top Level Window couldn’t bind because will cause bug #9
 12. Command-Delete is not working with binding shortcut key
+13. Tkinter undo/redo mechanism need to be totally rewrite to perform perfect on undo 
+	- default undo/redo from tkinter text group two manipulation into one undo eg. delete+insert
+	- it also doesn't remember fewer than 3 character's delete or insert
+	- it sucks ass
  
 +------------------------------------------------------+
 |                      FIXED LIST                      |
@@ -39,3 +41,8 @@
 	When bind command with Root Window(self.__root.bind(command = KEY)) has 
 	the exactly same keys with accelerator in Menu Bar(accelerator = KEY)) 
 	under the condition of popping out Top Level Window will cause bugs
+
+3. fixed bug #10:
+	Undo Stack need to customize
+	- all delete short cut and region edit like comment and indent
+	- taking the advantage from tkinter text undo/redo mechanism 

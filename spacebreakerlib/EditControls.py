@@ -87,6 +87,7 @@ class EditControls:
         return 'break'
     
     def __selectAll(self,event = None):
+        
         self.__textArea.tag_add('sel', '1.0', tk.END)
         self.__textArea.mark_set(tk.INSERT, '1.0')
         self.__textArea.see(tk.INSERT)
@@ -134,7 +135,11 @@ class EditControls:
         #+1c to remove the linefeed
         tail = self.__textArea.index("insert lineend +1c")
         self.__textArea.tag_remove("sel", 1.0, tk.END)
+        self.__textArea.edit_separator()
         self.__textArea.delete(head,tail)
+        self.__textArea.insert(head,'\n'+' '*(int(tail.split('.')[-1])-int(head.split('.')[-1])))
+        self.__textArea.edit_separator()
+        self.__textArea.mark_set(tk.INSERT,head)
         return 'break'
 
     def __deleteToLineStart(self, event = None):
@@ -142,6 +147,9 @@ class EditControls:
         tail = self.__textArea.index('insert +1c')
         self.__textArea.tag_remove("sel", 1.0, tk.END)
         self.__textArea.delete(head,tail)
+        self.__textArea.insert(head,' '*(int(tail.split('.')[-1])-int(head.split('.')[-1])))
+        self.__textArea.tag_add("sel", head, tk.INSERT)
+        self.__textArea.mark_set(tk.INSERT,tail)
         return 'break'
 
     def __deleteToLineEnd(self, event = None):
@@ -149,6 +157,9 @@ class EditControls:
         tail = self.__textArea.index('insert lineend')
         self.__textArea.tag_remove("sel", 1.0, tk.END)
         self.__textArea.delete(head,tail)
+        self.__textArea.insert(head,' '*(int(tail.split('.')[-1])-int(head.split('.')[-1])))
+        self.__textArea.tag_add("sel", head, tk.INSERT)
+        self.__textArea.mark_set(tk.INSERT,head)
         return 'break'
 
     def __deleteUpOneLine(self, event=None):
