@@ -12,7 +12,8 @@
  6. 
  7. not found pop error
  8. cannot cancel find highlight 
- 9. 
+ 9. Shortcut not working properly when new TopLevel window
+    is created. 1. Close without sasve; 2. Find window
  10. Undo Stack need to customize
 	- all delete short cut and region edit like comment and indent
 11. Accelerator about Top Level Window couldn’t bind because will cause bug #9
