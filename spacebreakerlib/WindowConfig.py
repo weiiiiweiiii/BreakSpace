@@ -34,4 +34,5 @@ class WindowConfig:
         # pc top to win top
         top = int((sHeight / 2) - (self.__winHeight /2))
         self.__root.geometry(f'{self.__winWidth}x{self.__winHeight}+{left}+{top}')
+    
 
