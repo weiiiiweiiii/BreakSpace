@@ -10,9 +10,10 @@ from spacebreakerlib import WindowConfig as wc
 from spacebreakerlib import TextArea as ta
 
 
+
 class SpaceBreaker(tk.Tk):
     
-    def __init__(self):
+    def __init__(self, file_name = None):
         tk.Tk.__init__(self)
         
         #get title
@@ -26,8 +27,17 @@ class SpaceBreaker(tk.Tk):
         #   -File handler
         #   -Menu Bar
         self.__textArea = ta.TextArea(self)
+        
+        if file_name!=None:
+            self.__textArea.textRelatedObjs['OpenWithName'](file_name)
 
 
     def run(self):
         self.mainloop()
+
+        
+
+        
+        
+            
 

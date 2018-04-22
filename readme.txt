@@ -19,12 +19,26 @@ SpaceBreaker Introduction
 |  |  |  |
 |  |  |  +---> TextBind.py 
 |  |  |  |  |
+|  |  |  |  +---> FilesControls.py
+|  |  |  |  |  |
+|  |  |  |  |  +---> RecentFiles.py
+|  |  |  |  |  |
+|  |  |  |  |  +---> ExitDialog.py
+|  |  |  |  |  
+|  |  |  |  +---> EditControls.py
+|  |  |  |  |
+|  |  |  |  +---> FormatControls.py
+|  |  |  |  |
+|  |  |  |  +---> FontControls.py
+|  |  |  |  |
 |  |  |  |  +---> ScrollbarXY.py
 |  |  |  |  |
-|  |  |  |  +---> FilesControls.py
-|  |  |  |  |
-|  |  |  |  +---> MenuBar.py 
-|	
+|  |  |  |  +---> MenuBar.py
+|  |  |  |  | 
+|  |  |  |  +---> LineNumber.py
+|
++---> recentFiles.spacebreaker
+|
 +---> main.py
 
 
@@ -58,11 +72,6 @@ SpaceBreaker Introduction
 	- Functions, like FilesControls.
 	- Organs, like ScrollbarXY and MenuBar.
 
-- ScrollbarXY.py
-	- Vertical and horizontal scrollbar related to Text Area.
-	- It has to be pack into root window before text area pack
-	  itself into root window.
-
 - FilesControls.py
 	- Controls all files utility functions and stored in Text
 	  Area Related Object Dictionary.
@@ -71,11 +80,34 @@ SpaceBreaker Introduction
 		- Save
 		- Exit
 
+- RecentFiles.py
+	- Contains 5 recent opened files 
+
+- ExitDialog.py
+	- Ask about non saved file exit
+
+- EditControls.py
+	- All edit components like copy, paste, find, delete
+
+- FormatControls.py
+	- All format components like area indent and comment
+
+- FontControls.py
+	- All fonts components like italic
+
+- ScrollbarXY.py
+	- Vertical and horizontal scrollbar related to Text Area.
+	- It has to be pack into root window before text area pack
+	  itself into root window.
+
 - MenuBar.py
 	- Need to be constructed after all utility functions within
 	  Menu like FilesControl.
-	- adopting function objects within Text Area Related Object
+	- Adopting function objects within Text Area Related Object
 	  Dictionary.
+
+- LineNumber.py
+	- Tracking input line numbers
 
 
 //
@@ -117,3 +149,29 @@ SpaceBreaker Introduction
 //            i@5,:::,,,,,,,,.... .                   . .:::;;;;;irrrss111111
 //            9Bi,:,,,,......                        ..r91;;;;;iirrsss1ss1111
 //
+
+//
+//                       _oo0oo_
+//                      o8888888o
+//                      88" . "88
+//                      (| -_- |)
+//                      0\  =  /0
+//                    ___/`---'\___
+//                  .' \\|     |// '.
+//                 / \\|||  :  |||// \
+//                / _||||| -:- |||||- \
+//               |   | \\\  -  /// |   |
+//               | \_|  ''\---/''  |_/ |
+//               \  .-\__  '-'  ___/-. /
+//             ___'. .'  /--.--\  `. .'___
+//          ."" '<  `.___\_<|>_/___.' >' "".
+//         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+//         \  \ `_.   \_ __\ /__ _/   .-` /  /
+//     =====`-.____`.___ \_____/___.-`___.-'=====
+//                       `=---='
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+//               佛祖保佑         永无BUG
+//            GOD BLESS ME   THERE IS NO BUG
+//
+
